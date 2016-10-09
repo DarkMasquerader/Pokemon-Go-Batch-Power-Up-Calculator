@@ -27,7 +27,7 @@ public class ListOfPokemon {
 			bw.newLine();
 			totalDust += p.getDustUsage();
 		}
-		bw.write("\t\t\t\tTotal Dust Used: " + totalDust);
+		bw.write("\t\t\t\t\t\tTotal Dust Used: " + totalDust);
 		bw.newLine();
 		bw.close();
 			
