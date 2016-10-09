@@ -1,0 +1,3 @@
+Fearow 14.0 42 14 665
+Kingler 14.5 43 11
+Beedrill 13.0 28 m 520
