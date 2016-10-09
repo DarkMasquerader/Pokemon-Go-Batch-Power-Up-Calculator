@@ -1,0 +1,7 @@
+Name	Level	Candy	Dust Used	Power Ups Completed
+
+Fearow	14.0 -> 21.0	42 -> 14	29600	14
+Kingler	14.0 -> 19.5	43 -> 21	22100	11
+Beedrill	13.0 -> 19.5	28 -> 2	25300	13
+				Total Dust Used: 77000
+
