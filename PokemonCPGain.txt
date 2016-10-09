@@ -1,0 +1,39 @@
+53 Mewtwo
+50 Dragonite
+45 Snorlax
+43 Lapras
+42 Mew
+41 Moltres
+40 Arcanine Vaporeon
+39 Gyarados Zapdos
+38 Exeggutor Muk
+37 Weezing Flareon Articuno
+35 Slowbro Victreebel Machamp
+34 Poliwrath
+33 Clefable Nidoking Venusaur Charizard
+32 Golduck Nidoqueen Vileplume Blastoise Weezing Omastar
+31 Aerodactyl Golem Wigglytuff Dewgong Ninetales Magmar
+30 Kabutops Electabuzz Starmie Jolteon Rapidash Pinsir Scyther Tentacruel
+29 Gengar Hypno Pidgeot Rhydon Seaking Kangaskhan
+27 Primeape Golbat Raichu
+26 Cloyster
+25 Kingler Tauros Magneton Venomoth Alakazam Tangela Dragonair
+24 Arbok Dodrio Growlithe Porygon Machoke
+23 Fearow Parasect Sandslash Charmeleon
+22 Jynx Lickitung Seadra Marowak Ivysaur Persian Drowzee
+21 Electrode Hitmonchan Hitmonlee Mr. Mime Gloom Weepinbell Wartortle
+19 Raticate Beedrill Nidorino Ponyta
+18 Nidorina Graveler
+17 Eevee Grimer
+16 Dugtrio Clefairy Poliwhirl Kadabra Bellsprout Seel Koffing Rhyhorn Kabuto Slowpoke Omanyte
+15 Oddish Machop Farfetch'd
+14 Psyduck Goldeen
+13 Squirtle Bulbasaur Charmander Dratini Bellsprout Cubone
+12 Onix Vulpix Paras Mankey Magnemite Pikachu Nidoran(Female) Horsea Staryu
+11 Ekans Sandshrew Zubat Geodude Gastly Nidoran(Male) Jigglypuff Meowth Krabby
+10 Pidgey Doduo Poliwag Shellder Voltorb Ditto
+9 Abra Chansey Spearow
+7 Rattata Diglett Kakuna
+6 Metapod
+5 Caterpie Weedle
+3 Magikarp
