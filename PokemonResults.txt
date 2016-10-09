@@ -1,0 +1,6 @@
+Name	Level	Candy	Dust Used	Power Ups Completed	Estimated CP Gain	Estimated CP Change
+
+Fearow	14.0 -> 21.0	42 -> 14	29600	14	322	665 -> 987
+Kingler	14.5 -> 20.0	43 -> 21	23000	11	275
+Beedrill	13.0 -> 19.5	28 -> 2	25300	13	247	520 -> 767
+						Total Dust Used: 77900
