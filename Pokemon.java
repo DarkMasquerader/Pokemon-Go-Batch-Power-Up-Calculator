@@ -2,22 +2,35 @@ import customExceptions.BadLevelException;
 
 public class Pokemon {
 	private final String name;
-	private final int initialCandy, initialPowerUps;
+	private final int initialCandy, initialPowerUps, averageCP, initialCP;
 	private final float initialLevel;
 	
 	private float level;
-	private int remainingCandy, noPowerUps, accumulatedLevelUpCost = 0;
-	private final boolean maxPowerUp;
+	private int remainingCandy, noPowerUps, accumulatedLevelUpCost = 0, powerUpsDone = 0;
+	private final boolean maxPowerUp,givenCP;
 	private Cost cost;
 
+	
 	public String toString(){
-		return getName() + "\t" + 
+		
+		//If initialLevel == 0 (Don't print the change in message (below)
+		if(!isGivenCP()){
+			return getName() + "\t" + 
 				getInitialLevel() + " -> " + getLevel() + "\t" + 
 					getInitialCandy() + " -> " + getRemainingCandy() + "\t" +
-						getDustUsage();
+						getDustUsage() + "\t" + String.valueOf(getPowerUpsDone()) + "\t" +
+							getEstimatedCPGain(); //Estimated CP Gain
+		} else {
+			return getName() + "\t" + 
+				getInitialLevel() + " -> " + getLevel() + "\t" + 
+					getInitialCandy() + " -> " + getRemainingCandy() + "\t" +
+						getDustUsage() + "\t" + String.valueOf(getPowerUpsDone()) + "\t" +
+							getEstimatedCPGain() + "\t" + 
+								getInitialCP() + " -> " + (getInitialCP() +getEstimatedCPGain());
+		}
 	}
 	
-	public Pokemon(String name, float level, int remainingCandy, int noPowerUps) throws BadLevelException {
+	public Pokemon(String name, float level, int remainingCandy, int noPowerUps, Integer cp) throws BadLevelException {
 		this.name = name;
 		maxPowerUp = false;
 		
@@ -28,13 +41,36 @@ public class Pokemon {
 		initialCandy = getRemainingCandy();
 		initialPowerUps = getNoPowerUps();
 		initialLevel = getLevel();
-			
+		
+		averageCP = cp;
+		initialCP = 0;
+		givenCP = false;
 		runChecker();
 		//Need to check for less candy than cost
 	}
 
-	public Pokemon(String name, float level, int remainingCandy, String max) throws BadLevelException {
-
+	public Pokemon(String name, float level, int remainingCandy, int noPowerUps, Integer cp, int initCP) throws BadLevelException {
+		this.name = name;
+		maxPowerUp = false;
+		
+		setLevel(level);
+		setRemainingCandy(remainingCandy);
+		setNoPowerUps(noPowerUps);
+		
+		initialCandy = getRemainingCandy();
+		initialPowerUps = getNoPowerUps();
+		initialLevel = getLevel();
+		
+		averageCP = cp;
+		initialCP = initCP;
+		givenCP = true;
+		
+		runChecker();
+		//Need to check for less candy than cost
+	}
+	
+	public Pokemon(String name, float level, int remainingCandy, String max, Integer cp) throws BadLevelException {
+		
 		this.name = name;
 		maxPowerUp = true;
 		
@@ -45,9 +81,36 @@ public class Pokemon {
 		initialPowerUps = getNoPowerUps();
 		initialLevel = getLevel();
 		
+		averageCP = cp;
+		initialCP = 0;
+		givenCP = false;
+		
 		runChecker();
 		//Need to work out number of power-ups from given info
+		
 	}
+	
+	public Pokemon(String name, float level, int remainingCandy, String max, Integer cp, int initCP) throws BadLevelException {
+		
+		this.name = name;
+		maxPowerUp = true;
+		
+		setLevel(level);
+		setRemainingCandy(remainingCandy);
+		
+		initialCandy = getRemainingCandy();
+		initialPowerUps = getNoPowerUps();
+		initialLevel = getLevel();
+		
+		averageCP = cp;
+		initialCP = initCP;
+		givenCP = true;
+		
+		runChecker();
+		//Need to work out number of power-ups from given info
+		
+	}
+	
 	
 	public void runChecker() throws BadLevelException {
 		determineTier();
@@ -62,7 +125,8 @@ public class Pokemon {
 				setRemainingCandy(getRemainingCandy() - cost.getCandy()); //Subtracts power-up candy cost
 				setLevel(getLevel() + 0.5f); //Adds half a level to a pokemon
 				incDustUsage(cost.getDust()); //Adds cost of levelling up
-				decNoPowerups();
+				decNoPowerups(); //Decreases Number of remaining powerups to do
+				incPowerUpsDone(); //Increases counter tracking number of completed power ups
 				checkTier();
 			}
 			
@@ -72,6 +136,7 @@ public class Pokemon {
 				setRemainingCandy(getRemainingCandy() - cost.getCandy()); //Subtracts power-up candy cost
 				setLevel(getLevel() + 0.5f); //Adds half a level to a pokemon
 				incDustUsage(cost.getDust()); //Adds cost of levelling up
+				incPowerUpsDone();
 				checkTier();
 		
 			}
@@ -130,6 +195,7 @@ public class Pokemon {
 			
 			
 	}
+	
 	
 	public String getName() {
 		return name;
@@ -202,8 +268,30 @@ public class Pokemon {
 	public void incDustUsage(int accumulatedLevelUpCost) {
 		this.accumulatedLevelUpCost += accumulatedLevelUpCost;
 	}
+
+	public int getAverageCP() {
+		return averageCP;
+	}
+
+	public boolean isGivenCP() {
+		return givenCP;
+	}
 	
+	public int getInitialCP() {
+		return initialCP;
+	}
 	
+	public int getEstimatedCPGain() { //Average CP x Difference in candies before and after 
+		return isMaxPowerUp() == true? getAverageCP() * getPowerUpsDone() : getAverageCP() * (getInitialPowerUps() - getNoPowerUps());
+		//If Maximum power ups were selected, getInitialPowerUps() == 0.
+	}
 	
+	public void incPowerUpsDone() {
+		powerUpsDone++;
+	}
+	
+	public int getPowerUpsDone() {
+		return powerUpsDone;
+	}
 
 }
